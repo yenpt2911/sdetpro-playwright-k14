@@ -15,7 +15,7 @@ if(bmi < 18.5){
     console.log("Underweight and need to increase: " + minimumWeightNeedToIncrease + " kilogram");
 } else if (bmi >= 18.5 && bmi <= 24.9){
     console.log("Normal weight and bmi is: ", bmi + " no need to increase or decrease kilogram");
-} else if (bmi >= 25){
+} else {
     bmi = maximumNormalWeight;
     newWeight = bmi * (height*height);
     minimumWeightNeedToDecrease = weight - newWeight;
