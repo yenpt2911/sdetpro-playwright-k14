@@ -1,3 +1,4 @@
+/**
 const readline = require('readline-sync');
 const givenStr = getUserInput();
 
@@ -20,5 +21,25 @@ function groupWordMap(givenStr){
 function getUserInput(){
     return readline.question('Please enter your strings:')
 }
+*/
 
+const readlineSync = require('readline-sync');
+
+function groupWords() {
+    const groupedWords = {};
+    console.log(groupedWords.abc);
+
+    const userInput = readlineSync.question('Your sentence: ');
+    const words = userInput.split(' ');
+    words.forEach(function (word) {
+        // .hasOwnProperty
+        if(groupedWords[word]){
+            groupedWords[word]++;
+        } else {
+            groupedWords[word] = 1;
+        }
+    });
+    console.log(groupedWords);
+}
+groupWords();
 
