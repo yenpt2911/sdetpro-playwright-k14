@@ -9,7 +9,7 @@ Please using PROMISE and thenable to solve this
 Allow user to input an userid and postId, print out that post content
 Print all posts for that user
  */
-
+const readline = require('readline-sync');
 const {sendRequest} = require('./RequestHelper');
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 const SLUG = '/posts';
@@ -23,8 +23,10 @@ const response = fetch(url).then(function(resolvedData){
 /**
  * 1. userId, postId -> post's content
  */
-const userId = 1;
-const postId = 2;
+ let userId = readline.question("Please input userId: ");
+ userId=Number(userId);
+ let postId = readline.question("Please input postId: ");
+ postId=Number(postId);
 
 printTargetPost(userId, postId);
 
@@ -48,7 +50,13 @@ function printTargetPost(userId, postId){
 
 function printAllPosts(userId){
     _getAllPosts(userId).then(function (filteredPosts){
-        console.log(filteredPosts);
+       if(filteredPosts.length != 0 ){
+            for(const post of filteredPosts){
+                console.log(post.body);
+            }
+        } else {
+            console.log('Dont have the post with userId: ${userId}');
+        }       
     });
 }
 
